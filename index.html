@@ -1,0 +1,1438 @@
+<html>
+	<head>
+		<link rel="icon" href="logo.png" type="image/png">
+		<title>Pistoleros \(ツ)/</title>
+	</head>
+	<body style="background-color: black;">
+	<div id="juego">
+		<div id="piso_1" style="margin-top: 330px;"></div>
+		<div id="piso_2" style="margin-top: 330px; margin-left: 500px;"></div>
+		<div id="piso_3" style="margin-top: 230px; margin-left: 250px;"></div>
+		<div id="piso_4" style="margin-top: 140px; margin-left: 0px;"></div>
+		<div id="piso_5" style="margin-top: 140px; margin-left: 500px;"></div>
+		<div id="cocoro_mario">
+		<h2 style="margin:0;">Jugador 1</h2>
+		<div id="si">
+		<img class="cocoro" id="cocorom1" src="cocoro.png">
+		<img class="cocoro" id="cocorom2" src="cocoro.png">
+		<img class="cocoro" id="cocorom3" src="cocoro.png">
+		</div>
+		</div>
+		<div id="cocoro_sonic">
+		<h2 style="margin:0;">Jugador 2</h2>
+		<div id="no">
+		<img class="cocoro" id="cocoros1" src="cocoro.png">
+		<img class="cocoro" id="cocoros2" src="cocoro.png">
+		<img class="cocoro" id="cocoros3" src="cocoro.png">
+		</div>
+		</div>
+		<img id="bala" src="bala.png" style="display:none; width:10px; height:5px; position:absolute; top:405px; left:40px;">
+		<img id="mario" src="player1.png" style="top: 380px; left: 0px;">
+		<img id="bala1" src="bala.png" style="display:none; width:10px; height:5px; position:absolute; top:405px; left:650px;">
+		<img id="sonic" src="player2_v.png" style="top: 380px; left: 660px;">
+		<div id="piso"></div>
+	</div>
+	<div class="gameover" id="gameover_player1" style="display:none;">
+		<h1 style="font-family: 'Arial Black';">Game Over</h1>
+		<h1 style="font-family: 'Arial Black';">Player 1 won!!!</h1>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<div id="gameover_botones">
+		<button class="verdad" onclick="hola()">Restart</button>
+		<button class="verdad" onclick="aparece()">Menu</button>
+		</div>
+	</div>
+	<div class="gameover" id="gameover_player2" style="display:none;">
+		<h1 style="font-family: 'Arial Black';">Game Over</h1>
+		<h1 style="font-family: 'Arial Black';">Player 2 won!!!</h1>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<div id="gameover_botones">
+		<button class="verdad" onclick="hola()">Restart</button>
+		<button class="verdad" onclick="aparece()">Menu</button>
+		</div>
+	</div>
+	<div class="gameover" id="menu" style="display:block;">
+		<img src="titulo.png">
+		<img src="disparo.png">
+		<br>
+		<br>
+		<br>
+		<br>
+		<button class="verdad" style="width:150px;">Singleplayer</button>
+		<button class="verdad" onclick="controlespapu()" style="width:150px;">Multiplayer</button>
+		<button class="verdad" onclick="configuracion()" style="width:165px;">Configuración</button>
+	</div>
+	<div class="gameover" id="configuracion" style="display:none; text-align:left;">
+		<h1 style="margin-left:20px;">Configuración</h1>
+		<br>
+		<img src="muted.png" class="verdad" onclick="musica_papu()" id="soc">
+		<h2 style="margin-top:-50px; margin-left:150px;">Musica</h2>
+		<audio id="quetal">
+			<source src="fondo.mp3" type="audio/mpeg">
+		</audio>
+		<div class="slidecontainer">
+			<input type="range" min="0" max="100" value="50" class="slider" id="vol_music" oninput="musica()">
+		</div>
+		<br>
+		<br>
+		<img src="audio.png" class="verdad" onclick="sonido_papu()" id="sic">
+		<h2 style="margin-top:-50px; margin-left:150px;">Sonido</h2>
+		<audio id="piu">
+			<source src="piu.m4a" type="audio/mpeg">
+		</audio>
+		<audio id="piu1">
+			<source src="piu.m4a" type="audio/mpeg">
+		</audio>
+		<audio id="click">
+			<source src="click.m4a" type="audio/mpeg">
+		</audio>
+		<audio id="caida">
+			<source src="caida.m4a" type="audio/mpeg">
+		</audio>
+		<audio id="caida1">
+			<source src="caida.m4a" type="audio/mpeg">
+		</audio>
+		<div class="slidecontainer">
+			<input type="range" min="0" max="100" value="50" class="slider" id="vol_sound" oninput="sonido()">
+		</div>
+		<br><br>
+		<p style="text-align:center;">Agradecimientos especiales a mi hermana que hizo el sonido :D</p>
+		<br>
+		<input type="button" class="verdad" onclick="aparece()" value="Menu" style="margin-left:40%; width:20%;">
+	</div>
+	<div class="gameover" id="tutorial" style="display:none; font-family:'Arial Black';">
+		<h1>Controles</h1>
+		<div id="panel1">
+		<h2>Player 1</h2>
+		<input name="salto" type="button" class="controleses" value="w">
+		<label for="salto">Saltar</label>
+		<br>
+		<br>
+		<input name="izquierda" type="button" class="controleses" value="a">
+		<label for="izquierda">Izquierda</label>
+		<br>
+		<br>
+		<input name="derecha" type="button" class="controleses" value="a">
+		<label for="derecha">Derecha</label>
+		<br>
+		<br>
+		<input name="disparar" type="button" class="controleses" value="e">
+		<label for="disparar">Disparar</label>
+		<br>
+		<br>
+		<input name="pausa" type="button" class="controleses" value="t">
+		<label for="pausa">Pausar</label>
+		</div>
+		<div id="panel2">
+		<h2>Player 2</h2>
+		<input name="salto" type="button" class="controleses" value="↑">
+		<label for="salto">Saltar</label>
+		<br>
+		<br>
+		<input name="izquierda" type="button" class="controleses" value="←">
+		<label for="izquierda">Izquierda</label>
+		<br>
+		<br>
+		<input name="derecha" type="button" class="controleses" value="→">
+		<label for="derecha">Derecha</label>
+		<br>
+		<br>
+		<input name="disparar" type="button" class="controleses" value="k">
+		<label for="disparar">Disparar</label>
+		<br>
+		<br>
+		<input name="pausa" type="button" class="controleses" value="p">
+		<label for="pausa">Pausar</label>
+		</div>
+		<input id="entendido" type="button" onclick="hola()" value="Entendido" class="verdad" style="width:150px;">
+	</div>
+	<div id="pausado" class="gameover" style="display:none; font-family:'Arial Black';">
+		<h1 style="font-size:40px;"><i>En pausa</i></h1>
+		<img type="img/gif" src="ninja.gif">
+		<br>
+		<br>
+		<br>
+		<br>
+		<input type="button" class="verdad" onclick="reanudar()" value="Despausar" style="width:150px;">
+	</div>
+	<div id="nashe">
+	<p>Anuncio salvaje aparece</p>
+	<iframe src="https://anunciorandom.netlify.app"></iframe>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<p>No olvides de activar la musica en configuración <br>para una mejor experiencia ;)</p>
+	</div>
+		<style>
+		#piso{
+		position: absolute;
+		width: 700px;
+		height: 50px;
+		background-color: white;
+		margin-top: 450px;
+		}
+		#juego{
+		width: 700px;
+		height: 500px;
+		border: solid white 1px;
+		margin-left: 100px;
+		margin-top: 100px;
+		position: relative;
+		}
+		#mario{
+		position: absolute;
+		width: 40px;
+		height: 70px;
+		}
+		#sonic{
+		position: absolute;
+		width: 40px;
+		height: 70px;
+		}
+		#nashe{
+			position:absolute;
+			top: 100px;
+			left: 940px;
+			color: white;
+		}
+		#configuracion{
+			font-family: 'Arial Black';
+		}
+		.cocoro{
+			width:16px;
+			height:16px;
+		}
+		#cocoro_mario{
+			position:absolute;
+			left:30px;
+			top:20px;
+			color:white;
+			font-family: 'Arial Black';
+		}
+		#cocoro_sonic{
+			position:absolute;
+			left:545px;
+			top:20px;
+			color:white;
+			font-family: 'Arial Black';
+		}
+		#no{
+			float:right;
+		}
+		#piso_1{
+		position: absolute;
+		width: 200px;
+		height: 20px;
+		background-color: white;
+		}
+		#piso_2{
+		position: absolute;
+		width: 200px;
+		height: 20px;
+		background-color: white;
+		}
+		#piso_3{
+		position: absolute;
+		width: 200px;
+		height: 20px;
+		background-color: white;
+		}
+		#piso_4{
+		position: absolute;
+		width: 200px;
+		height: 20px;
+		background-color: white;
+		}
+		#piso_5{
+		position: absolute;
+		width: 200px;
+		height: 20px;
+		background-color: white;
+		}
+		.gameover{
+			text-align: center;
+			margin-top:-502px;
+			margin-left:100px;
+			border:solid 0.5px white;
+			position:absolute;
+			width:700px;
+			height:500px;
+			color:white;
+			background-color: black;
+		}
+		.verdad{
+			width:100px;
+			height:60px;
+			background-color:black;
+			border: solid 0.5px white;
+			color: white;
+			margin-right:30px;
+			margin-left:30px;
+			font-family: 'Arial Black';
+			font-size: 20px;
+			cursor: hand;
+		}
+		.controleses{
+			width:40px;
+			height:40px;
+			background-color:black;
+			border: solid 0.5px white;
+			color: white;
+			font-family: 'Arial Black';
+			font-size: 20px;
+		}
+		#panel1{
+			margin-left:30px;
+			width:230px;
+			height:400px;
+			border: solid 0.5px white;
+		}
+		#panel2{
+			position:aboslute;
+			margin-left:440px;
+			margin-top:-400px;
+			width:230px;
+			height:400px;
+			border: solid 0.5px white;
+		}
+		#entendido{
+			position:absolute;
+			margin-left:-75px;
+			margin-top:-60px;
+		}
+		#pausado{
+			opacity:0.9;
+		}
+		.slidecontainer {
+			width: 55%;
+			float:right;
+			margin-right:30px;
+			margin-top:-50px;
+		}
+
+		.slider {
+			-webkit-appearance: none;
+			width: 100%;
+			height: 25px;
+			background: black;
+			outline: none;
+			opacity: 0.7;
+			transition: opacity .2s;
+			border: 1px solid white;
+		}
+
+		.slider::-webkit-slider-thumb {
+			appearance: none;
+			width: 25px;
+			height: 25px;
+			background: white;
+			cursor: pointer;
+		}
+
+		</style>
+		<script type="text/javascript">
+			const mario = document.getElementById("mario");
+			const sonic = document.getElementById("sonic");
+			const piso_1 = document.getElementById("piso_1");
+			const piso_3 = document.getElementById("piso_3");
+			const piso_4 = document.getElementById("piso_4");
+			const bala = document.getElementById("bala");
+			const bala1 = document.getElementById("bala1");
+			const co_mario = document.getElementById("si");
+			const co_sonic = document.getElementById("no");
+			const kkk = document.getElementById('gameover_player2')
+			const jajaja = document.getElementById('gameover_player1')
+			const pqbro = document.getElementById('menu')
+			const tuto = document.getElementById('tutorial')
+			const paz = document.getElementById('pausado')
+			const config = document.getElementById('configuracion')
+			const music = document.getElementById('quetal')
+			const piu = document.getElementById('piu')
+			const piu1 = document.getElementById('piu1')
+			const click = document.getElementById('click')
+			const caida = document.getElementById('caida')
+			const caida1 = document.getElementById('caida1')
+			const vol_music = document.getElementById('vol_music')
+			const vol_sound = document.getElementById('vol_sound')
+			
+			//este es para player 1
+			var gravedad_top = 200;
+			var gravedad_bottom = 380;
+			var il = mario.style.top;
+			il.split("px");
+			var mario_arriba = parseInt(il);
+			var el = mario.style.left;
+			el.split("px");
+			var mario_izquierda = parseInt(el);
+			var it = 1;
+			var rav = true;
+			var calvin = true;
+			var falso = false;
+			var religiosa = 1;
+			var ga = bala.style.left;
+			ga.split("px");
+			var bala_x = parseInt(ga);
+			var go = bala.style.top;
+			go.split("px");
+			var bala_y = parseInt(go);
+			var claro = 1;
+			var pasta = false;
+			var hipo = false;
+			var zzz = false;
+			var cont_co_mario= 3;
+			
+			//este es para player 2
+			var gravedad_top1 = 200;
+			var gravedad_bottom1 = 380;
+			var ils = sonic.style.top;
+			ils.split("px");
+			var sonic_arriba = parseInt(ils);
+			var els = sonic.style.left;
+			els.split("px");
+			var sonic_izquierda = parseInt(els);
+			var it1 = 1;
+			var rav1 = true;
+			var calvin1 = true;
+			var falso1 = false;
+			var religiosa1 = 1;
+			var ga1 = bala1.style.left;
+			ga1.split("px");
+			var bala_x1 = parseInt(ga1);
+			var go1 = bala1.style.top;
+			go1.split("px");
+			var bala_y1 = parseInt(go1);
+			var oscuro = 1;
+			var pasto = false;
+			var hipo1 = true;
+			var zzz1 = true;
+			var cont_co_sonic= 3;
+			
+			//variables en general :v
+			var ol = piso_1.style.marginTop;
+			ol.split("px");
+			var piso_1_pos = parseInt(ol);
+			var piso_1_pos_ar = piso_1_pos -= 70;
+			var al = piso_3.style.marginTop;
+			al.split("px");
+			var piso_3_pos = parseInt(al);
+			var piso_3_pos_ar = piso_3_pos -= 70;
+			var ul = piso_4.style.marginTop;
+			ul.split("px");
+			var piso_4_pos = parseInt(ul);
+			var piso_4_pos_ar = piso_4_pos -= 70;
+			const inicial_ab = 380;
+			var cont = 1000;
+			const constante_de_planck = 120;
+			const constante_cosmologica = 100;
+			const entropia = 90;
+			var salir = false;
+			var confia = false;
+			var pelu = false;
+			var musica_on = false;
+			var sonido_on = true;
+			music.volume = 0.5;
+			piu.volume = 0.5;
+			piu1.volume = 0.5;
+			click.volume = 0.5;
+			caida.volume = 0.5;
+			caida1.volume = 0.5;
+			
+			function hola(){
+			click.play();
+			console.log("si");
+			if(confia == false){
+				confia = true;
+				kkk.style.display = "none";
+				jajaja.style.display = "none";
+				pqbro.style.display = "none";
+				tuto.style.display = "none";
+			}
+				var map = {}; // You could also use an array
+			onkeydown = onkeyup = function(e){
+			e = e || event; // to deal with IE
+			map[e.keyCode] = e.type == 'keydown';
+			//console.log(map); //para ver los controles en uso papu
+			var controles = setInterval(control, cont);
+			function control(){
+			if(map["80"] == true || map["84"] == true){
+					clearInterval(controles);
+					paz.style.display = "block";
+			}
+			//aqui los controles de player1:
+			if(map["87"] == true && falso == false && calvin == true){
+				if(calvin == true){
+				salto();
+				}
+			}
+			if(map["65"] == true){
+				izquierdita();
+				cont+=10;
+				claro++;
+				if(claro%2 == 0){
+					mario.src = "player1_v_adelante.png";
+				}
+				else{
+					mario.src = "player1_v_atras.png";
+				}
+			}
+			if(map["68"] == true){
+				derecha();
+				cont+=10;
+				claro++;
+				if(claro%2 == 0){
+					mario.src = "player1_adelante.png";
+				}
+				else{
+					mario.src = "player1_atras.png";
+				}
+			}
+			if(map["69"] == true && pasta == false){
+				disparar();
+			}
+			
+			//aqui los controles de player2:
+			if(map["38"] == true && falso1 == false && calvin1 == true){
+				if(calvin1 == true){
+				salto1();
+				}
+			}
+			if(map["37"] == true){
+				izquierdita1();
+				cont+=10;
+				oscuro++;
+				if(oscuro%2 == 0){
+					sonic.src = "player2_v_adelante.png";
+				}
+				else{
+					sonic.src = "player2_v_atras.png";
+				}
+			}
+			if(map["39"] == true){
+				derecha1();
+				cont+=10;
+				oscuro++;
+				if(oscuro%2 == 0){
+					sonic.src = "player2_adelante.png";
+				}
+				else{
+					sonic.src = "player2_atras.png";
+				}
+			}
+			if(map["75"] == true && pasto == false){
+				disparar1();
+			}
+			if(salir == true){
+				console.log("jijiju");
+				clearInterval(controles);
+			}
+			}
+			}
+			}
+			//funciones para el player 1:
+			function salto(){
+				rav = false;
+				falso = true;
+				var siu = setInterval(elto,20);
+				function elto(){
+					if(it == 1){
+						mario_arriba-=5;
+						bala_y-=5;
+						mario.style.top = mario_arriba;
+						console.log(mario.style.top);
+						if(pasta == false){
+							bala.style.top = bala_y;
+							console.log(bala.style.top);
+						}
+						if(mario_arriba  == gravedad_top){
+							it = 2;
+						}
+					}
+					if(it == 2){
+						mario_arriba+=5;
+						bala_y+=5;
+						mario.style.top = mario_arriba;
+						console.log(mario.style.top);
+						if(pasta == false){
+							bala.style.top = bala_y;
+							console.log(bala.style.top);
+						}
+						if(mario_arriba  == gravedad_bottom){
+							it = 3;
+							console.log(it);
+							bala.style.top = bala_y;
+						}
+					}
+					if(it == 3){
+						it = 1;
+						console.log(it);
+						clearInterval(siu);
+						falso = false;
+						rav = true;
+						if(mario_izquierda > 190 && mario_izquierda < 480 && mario_arriba == gravedad_bottom && religiosa == 2){
+							calvin = false;
+							grave_piso1();
+						}
+						else if((mario_izquierda < 230 || mario_izquierda > 430) && mario_arriba == gravedad_bottom && religiosa == 3){
+							console.log("ahhhh");
+							calvin = false;
+							grave_piso2();
+						}
+						else if(mario_izquierda > 190 && mario_izquierda < 480 && mario_arriba == gravedad_bottom && religiosa == 4){
+							calvin = false;
+							grave_piso3();
+						}
+						else{
+							caida.play();
+						}
+					}
+					if(mario_arriba == piso_1_pos_ar && it == 2){
+						gravedad_top -= constante_de_planck;
+						gravedad_bottom -= constante_de_planck;
+						it = 1;
+						falso = false;
+						rav = true;
+						religiosa = 2;
+						if(mario_izquierda > 190 && mario_izquierda < 480 && mario_arriba == gravedad_bottom && religiosa == 2){
+							calvin = false;
+							grave_piso1();
+						}
+						else{
+							caida.play();
+						}
+						clearInterval(siu);
+					}
+					if(mario_arriba == piso_3_pos_ar && it == 2){
+						caida.play();
+						console.log("aaa");
+						gravedad_top -= constante_cosmologica;
+						gravedad_bottom -= constante_cosmologica;
+						it = 1;
+						falso = false;
+						rav = true;
+						religiosa = 3;
+						if((mario_izquierda < 230 || mario_izquierda > 430) && mario_arriba == gravedad_bottom && religiosa == 3){
+							calvin = false;
+							grave_piso2();
+						}
+						else{
+						caida.play();
+						}
+						clearInterval(siu);
+					}
+					if(mario_arriba == piso_4_pos_ar && it == 2){
+						gravedad_bottom -= entropia;
+						it = 1;
+						falso = false;
+						rav = true;
+						religiosa = 4;
+						if(mario_izquierda > 190 && mario_izquierda < 480 && mario_arriba == gravedad_bottom && religiosa == 4){
+							calvin = false;
+							grave_piso3();
+						}
+						else{
+						caida.play();
+						}
+						clearInterval(siu);  //aqui es donde lo deje papu
+					}
+				}
+			}
+			function izquierdita(){
+				if(mario_izquierda >= 0){
+				mario_izquierda-=2;
+				mario.style.left = mario_izquierda;
+				bala_x -= 2;
+				if(pasta == false){
+					bala.style.left = bala_x;
+					hipo = true;
+				}
+				if(zzz == false){
+					zzz = true;
+					bala_x -= 28;
+					if(pasta == false){
+						bala.style.left = bala_x;
+						hipo = true;
+					}
+				}
+				if(mario_izquierda > 190 && mario_izquierda < 480 && mario_arriba == gravedad_bottom && religiosa == 2){
+				calvin = false;
+				grave_piso1();
+			}
+				if((mario_izquierda < 230 || mario_izquierda > 430) && mario_arriba == gravedad_bottom && religiosa == 3){
+					calvin = false;
+					grave_piso2();
+			}
+				if(mario_izquierda > 190 && mario_izquierda < 480 && mario_arriba == gravedad_bottom && religiosa == 4){
+							calvin = false;
+							grave_piso3();
+			}
+			}
+			}
+			function derecha(){
+				if(mario_izquierda <= 660){
+				mario_izquierda+=2;
+				mario.style.left = mario_izquierda;
+				bala_x += 2;
+				if(pasta == false){
+					bala.style.left = bala_x;
+					hipo = false;
+				}
+				if(zzz == true){
+					zzz = false;
+					bala_x += 28;
+					if(pasta == false){
+					bala.style.left = bala_x;
+					hipo = false;
+					}
+				}
+				if(mario_izquierda > 190 && mario_izquierda < 480 && mario_arriba == gravedad_bottom && religiosa == 2){
+				calvin = false;
+				grave_piso1();
+			}
+			if((mario_izquierda < 230 || mario_izquierda > 430) && mario_arriba == gravedad_bottom && religiosa == 3){
+				calvin = false;
+				console.log("no me digas que no, vamos juntando las palmas");
+				grave_piso2();
+			}
+			if(mario_izquierda > 190 && mario_izquierda < 480 && mario_arriba == gravedad_bottom && religiosa == 4){
+							calvin = false;
+							grave_piso3();
+						}
+			}
+			}
+			
+			function grave_piso1(){
+				if(mario_izquierda > 190 && mario_izquierda < 480 && mario_arriba == gravedad_bottom && religiosa == 2){
+				falso = true;
+				religiosa = 1;
+				var tuto = setInterval(newton, 20);
+				function newton(){
+					mario_arriba+=5;
+					bala_y+=5;
+					mario.style.top = mario_arriba;
+					console.log(mario.style.top);
+					if(pasta == false){
+						bala.style.top = bala_y;
+						console.log(bala.style.top);
+					}
+					if(rav == false){
+						clearInterval(tuto);
+					}
+					if(mario_arriba == inicial_ab){
+						caida.play();
+						falso = false;
+						gravedad_top += constante_de_planck;
+						gravedad_bottom += constante_de_planck;
+						calvin = true;
+						clearInterval(tuto);
+					}
+				}
+			}
+			}
+			function grave_piso2(){
+				if((mario_izquierda < 230 || mario_izquierda > 430) && mario_arriba == gravedad_bottom && religiosa == 3){
+				falso = true;
+				console.log(falso);
+				religiosa = 2;
+				var tucson = setInterval(fiumba, 20);
+				function fiumba(){
+					console.log("mr beast");
+					if(falso == true){
+					mario_arriba+=5;
+					bala_y+=5;
+					mario.style.top = mario_arriba;
+					console.log(mario.style.top);
+					if(pasta == false){
+						bala.style.top = bala_y;
+						console.log(bala.style.top);
+					}			
+					if(rav == false && religiosa != 3){
+						console.log("aqui llega?");
+						clearInterval(tucson);
+						gravedad_top += constante_cosmologica;
+						gravedad_bottom += constante_cosmologica;
+					}
+					}
+					else{
+						clearInterval(tucson);
+						gravedad_top += constante_cosmologica;
+						gravedad_bottom += constante_cosmologica;
+						calvin = true;
+					}
+					if(mario_arriba == piso_1_pos_ar){
+						clearInterval(tucson);
+						gravedad_top += constante_cosmologica;
+						gravedad_bottom += constante_cosmologica;
+						if(mario_izquierda > 190 && mario_izquierda < 480 && mario_arriba == gravedad_bottom && religiosa == 2){
+							calvin = false;
+							grave_piso1();
+						}
+						else{
+							caida.play();
+							calvin = true;
+						}
+						falso = false;
+					}
+				}
+			}
+			}
+			
+			function grave_piso3(){
+				if(mario_izquierda > 190 && mario_izquierda < 480 && mario_arriba == gravedad_bottom && religiosa == 4){
+				falso = true;
+				religiosa = 3;
+				var dou = setInterval(ahhhhh, 20);
+				function ahhhhh(){
+					if(falso == true){
+					mario_arriba+=5;
+					bala_y+=5;
+					mario.style.top = mario_arriba;
+					console.log(mario.style.top);
+					if(pasta == false){
+						bala.style.top = bala_y;
+						console.log(bala.style.top);
+					}		
+					if(rav == false && religiosa != 4){
+						clearInterval(dou);
+						gravedad_bottom += entropia;
+						console.log(gravedad_bottom);
+						console.log(mario_arriba);
+					}
+					}
+					else{
+						clearInterval(dou);
+						gravedad_bottom += entropia;
+						calvin = true;
+					}
+					if(mario_arriba == piso_3_pos_ar){
+						clearInterval(dou);
+						gravedad_bottom += entropia;
+						if((mario_izquierda < 230 || mario_izquierda > 430) && mario_arriba == gravedad_bottom && religiosa == 3){
+							console.log("Un logaritmo que tenga la misma base y argumento, siempre es uno papu");
+							calvin = false;
+							grave_piso2();
+						}
+						else{
+							caida.play();
+							calvin = true;
+							falso = false;
+							console.log(falso);
+						}
+					}
+				}
+			}
+			}
+			
+			function disparar(){
+				pasta = true;
+				piu.play();
+				bala.style.display = "block";
+				var ohno = setInterval(rio, 5);
+				var rosas = bala_x;
+				var rojas = bala_y;
+				function rio(){
+				if(hipo == false){
+					rosas += 2;
+					bala.style.left = rosas;
+					if((sonic_izquierda + 20) == rosas && rojas <= (sonic_arriba + 70) && rojas >= sonic_arriba){
+						clearInterval(ohno);
+						pasta = false;
+						bala.style.display = "none";
+						bala.style.top = bala_y;
+						bala.style.left = bala_x;
+						const gg = document.getElementById('cocoros'+cont_co_sonic);
+						gg.style.display = "none";
+						cont_co_sonic--;
+						if(cont_co_sonic == 0){
+							salir = true;
+							document.getElementById('gameover_player1').style.display = "block";
+							setTimeout(reinicio,100)
+						}
+					}
+					if(rosas == 690){
+						clearInterval(ohno);
+						pasta = false;
+						bala.style.display = "none";
+						bala.style.top = bala_y;
+						bala.style.left = bala_x;
+					}
+				}
+				else{
+					rosas -= 2;
+					bala.style.left = rosas;
+					if((sonic_izquierda + 20) == rosas && rojas <= (sonic_arriba + 70) && rojas >= sonic_arriba){
+						clearInterval(ohno);
+						pasta = false;
+						bala.style.display = "none";
+						bala.style.top = bala_y;
+						bala.style.left = bala_x;
+						const gg = document.getElementById('cocoros'+cont_co_sonic);
+						gg.style.display = "none";
+						cont_co_sonic--;
+						if(cont_co_sonic == 0){
+							salir = true;
+							document.getElementById('gameover_player1').style.display = "block";
+							setTimeout(reinicio,100)
+						}
+					}
+					if(rosas == 0){
+						clearInterval(ohno);
+						pasta = false;
+						bala.style.display = "none";
+						bala.style.top = bala_y;
+						bala.style.left = bala_x;
+					}
+				}
+				}
+			}
+			
+			//aqui terminan las funciones para player1
+			
+			//funciones para el player 2:
+			function salto1(){
+				rav1 = false;
+				falso1 = true;
+				var siu1 = setInterval(elto1,20);
+				function elto1(){
+					if(it1 == 1){
+						sonic_arriba-=5;
+						sonic.style.top = sonic_arriba;
+						bala_y1 -= 5;
+						if(pasto == false){
+							bala1.style.top = bala_y1;
+						}
+						if(sonic_arriba  == gravedad_top1){
+							it1 = 2;
+						}
+					}
+					if(it1 == 2){
+						sonic_arriba+=5;
+						sonic.style.top = sonic_arriba;
+						bala_y1 += 5;
+						if(pasto == false){
+							bala1.style.top = bala_y1;
+						}
+						if(sonic_arriba  == gravedad_bottom1){
+							it1 = 3;
+							console.log(it1);
+						}
+					}
+					if(it1 == 3){
+						it1 = 1;
+						console.log(it1);
+						clearInterval(siu1);
+						falso1 = false;
+						rav1 = true;
+						if(sonic_izquierda > 190 && sonic_izquierda < 480 && sonic_arriba == gravedad_bottom1 && religiosa1 == 2){
+							calvin1 = false;
+							grave_piso1s();
+						}
+						else if((sonic_izquierda < 230 || sonic_izquierda > 430) && sonic_arriba == gravedad_bottom1 && religiosa1 == 3){
+							console.log("ahhhh");
+							calvin1 = false;
+							grave_piso2s();
+						}
+						else if(sonic_izquierda > 190 && sonic_izquierda < 480 && sonic_arriba == gravedad_bottom1 && religiosa1 == 4){
+							calvin1 = false;
+							grave_piso3s();
+						}
+						else{
+							caida1.play();
+						}
+					}
+					if(sonic_arriba == piso_1_pos_ar && it1 == 2){
+						gravedad_top1 -= constante_de_planck;
+						gravedad_bottom1 -= constante_de_planck;
+						it1 = 1;
+						falso1 = false;
+						rav1 = true;
+						religiosa1 = 2;
+						if(sonic_izquierda > 190 && sonic_izquierda < 480 && sonic_arriba == gravedad_bottom1 && religiosa1 == 2){
+							calvin1 = false;
+							grave_piso1s();
+						}
+						else{
+						caida1.play();
+						}
+						clearInterval(siu1);
+					}
+					if(sonic_arriba == piso_3_pos_ar && it1 == 2){
+						console.log("aaa");
+						gravedad_top1 -= constante_cosmologica;
+						gravedad_bottom1 -= constante_cosmologica;
+						it1 = 1;
+						falso1 = false;
+						rav1 = true;
+						religiosa1 = 3;
+						if((sonic_izquierda < 230 || sonic_izquierda > 430) && sonic_arriba == gravedad_bottom1 && religiosa1 == 3){
+							calvin1 = false;
+							grave_piso2s();
+						}
+						else{
+						caida1.play();
+						}
+						clearInterval(siu1);
+					}
+					if(sonic_arriba == piso_4_pos_ar && it1 == 2){
+						gravedad_bottom1 -= entropia;
+						it1 = 1;
+						falso1 = false;
+						rav1 = true;
+						religiosa1 = 4;
+						if(sonic_izquierda > 190 && sonic_izquierda < 480 && sonic_arriba == gravedad_bottom1 && religiosa1 == 4){
+							calvin1 = false;
+							grave_piso3s();
+						}
+						else{
+						caida1.play();
+						}
+						clearInterval(siu1);  //aqui es donde lo deje papu
+					}
+				}
+			}
+			function izquierdita1(){
+				if(sonic_izquierda >= 0){
+				sonic_izquierda-=2;
+				sonic.style.left = sonic_izquierda;
+				bala_x1 -= 2;
+				if(pasto == false){
+					bala1.style.left = bala_x1;
+					hipo1 = true;
+				}
+				if(zzz1 == false){
+					zzz1 = true;
+					bala_x1 -= 28;
+					if(pasto == false){
+						bala1.style.left = bala_x1;
+						hipo1 = true;
+					}
+				}
+				if(sonic_izquierda > 190 && sonic_izquierda < 480 && sonic_arriba == gravedad_bottom1 && religiosa1 == 2){
+				calvin1 = false;
+				grave_piso1s();
+			}
+				if((sonic_izquierda < 230 || sonic_izquierda > 430) && sonic_arriba == gravedad_bottom1 && religiosa1 == 3){
+					calvin1 = false;
+					grave_piso2s();
+			}
+				if(sonic_izquierda > 190 && sonic_izquierda < 480 && sonic_arriba == gravedad_bottom1 && religiosa1 == 4){
+							calvin1 = false;
+							grave_piso3s();
+			}
+			}
+			}
+			function derecha1(){
+				if(sonic_izquierda <= 660){
+				sonic_izquierda+=2;
+				sonic.style.left = sonic_izquierda;
+				bala_x1 += 2;
+				if(pasto == false){
+					bala1.style.left = bala_x1;
+					hipo1 = false;
+				}
+				if(zzz1 == true){
+					zzz1 = false;
+					bala_x1 += 28;
+					if(pasto == false){
+					bala1.style.left = bala_x1;
+					hipo1 = false;
+					}
+				}
+				if(sonic_izquierda > 190 && sonic_izquierda < 480 && sonic_arriba == gravedad_bottom1 && religiosa1 == 2){
+				calvin1 = false;
+				grave_piso1s();
+			}
+			if((sonic_izquierda < 230 || sonic_izquierda > 430) && sonic_arriba == gravedad_bottom1 && religiosa1 == 3){
+				calvin1 = false;
+				console.log("no me digas que no, vamos juntando las palmas");
+				grave_piso2s();
+			}
+			if(sonic_izquierda > 190 && sonic_izquierda < 480 && sonic_arriba == gravedad_bottom1 && religiosa1 == 4){
+							calvin1 = false;
+							grave_piso3s();
+						}
+			}
+			}
+			
+			function grave_piso1s(){
+				if(sonic_izquierda > 190 && sonic_izquierda < 480 && sonic_arriba == gravedad_bottom1 && religiosa1 == 2){
+				falso1 = true;
+				religiosa1 = 1;
+				var tuto1 = setInterval(newton1, 20);
+				function newton1(){
+					sonic_arriba+=5;
+					sonic.style.top = sonic_arriba;
+					bala_y1+=5;
+					if(pasto == false){
+						bala1.style.top = bala_y1;
+						console.log(bala.style.top);
+					}
+					if(rav1 == false){
+						clearInterval(tuto1);
+					}
+					if(sonic_arriba == inicial_ab){
+						caida1.play();
+						falso1 = false;
+						gravedad_top1 += constante_de_planck;
+						gravedad_bottom1 += constante_de_planck;
+						calvin1 = true;
+						clearInterval(tuto1);
+					}
+				}
+			}
+			}
+			function grave_piso2s(){
+				if((sonic_izquierda < 230 || sonic_izquierda > 430) && sonic_arriba == gravedad_bottom1 && religiosa1 == 3){
+				falso1 = true;
+				console.log(falso1);
+				religiosa1 = 2;
+				var tucson1 = setInterval(fiumba1, 20);
+				function fiumba1(){
+					console.log("mr beast");
+					if(falso1 == true){
+					sonic_arriba+=5;
+					sonic.style.top = sonic_arriba;
+					bala_y1+=5;
+					if(pasto == false){
+						bala1.style.top = bala_y1;
+						console.log(bala1.style.top);
+					}
+					if(rav1 == false && religiosa1 != 3){
+						console.log("aqui llega?");
+						clearInterval(tucson1);
+						gravedad_top1 += constante_cosmologica;
+						gravedad_bottom1 += constante_cosmologica;
+					}
+					}
+					else{
+						clearInterval(tucson1);
+						gravedad_top1 += constante_cosmologica;
+						gravedad_bottom1 += constante_cosmologica;
+						calvin1 = true;
+					}
+					if(sonic_arriba == piso_1_pos_ar){
+						clearInterval(tucson1);
+						gravedad_top1 += constante_cosmologica;
+						gravedad_bottom1 += constante_cosmologica;
+						if(sonic_izquierda > 190 && sonic_izquierda < 480 && sonic_arriba == gravedad_bottom1 && religiosa1 == 2){
+							calvin1 = false;
+							grave_piso1s();
+						}
+						else{
+							caida1.play();
+							calvin1 = true;
+						}
+						falso1 = false;
+					}
+				}
+			}
+			}
+			
+			function grave_piso3s(){
+				if(sonic_izquierda > 190 && sonic_izquierda < 480 && sonic_arriba == gravedad_bottom1 && religiosa1 == 4){
+				falso1 = true;
+				religiosa1 = 3;
+				var dou1 = setInterval(ahhhhh1, 20);
+				function ahhhhh1(){
+					if(falso1 == true){
+					sonic_arriba+=5;
+					sonic.style.top = sonic_arriba;
+					bala_y1+=5;
+					if(pasto == false){
+						bala1.style.top = bala_y1;
+						console.log(bala1.style.top);
+					}
+					if(rav1 == false && religiosa1 != 4){
+						clearInterval(dou1);
+						gravedad_bottom1 += entropia;
+						console.log(gravedad_bottom1);
+						console.log(sonic_arriba);
+					}
+					}
+					else{
+						clearInterval(dou1);
+						gravedad_bottom1 += entropia;
+						calvin1 = true;
+					}
+					if(sonic_arriba == piso_3_pos_ar){
+						clearInterval(dou1);
+						gravedad_bottom1 += entropia;
+						if((sonic_izquierda < 230 || sonic_izquierda > 430) && sonic_arriba == gravedad_bottom1 && religiosa1 == 3){
+							console.log("Un logaritmo que tenga la misma base y argumento, siempre es uno papu");
+							calvin1 = false;
+							grave_piso2s();
+						}
+						else{
+							caida1.play();
+							calvin1 = true;
+							falso1 = false;
+							console.log(falso1);
+						}
+					}
+				}
+			}
+			}
+			
+			function disparar1(){
+				pasto = true;
+				piu1.play();
+				bala1.style.display = "block";
+				var ohsi = setInterval(mar, 5);
+				var rosas1 = bala_x1;
+				var rojas1 = bala_y1;
+				function mar(){
+				if(hipo1 == false){
+					rosas1 += 2;
+					bala1.style.left = rosas1;
+					if((mario_izquierda + 20) == rosas1 && rojas1 <= (mario_arriba + 70) && rojas1 >= mario_arriba){
+						clearInterval(ohsi);
+						pasto = false;
+						bala1.style.display = "none";
+						bala1.style.top = bala_y1;
+						bala1.style.left = bala_x1;
+						const easy = document.getElementById('cocorom'+cont_co_mario);
+						easy.style.display = "none";
+						cont_co_mario--;
+						if(cont_co_mario == 0){
+							salir = true;
+							document.getElementById('gameover_player2').style.display = "block";
+							setTimeout(reinicio,100)
+						}
+					}
+					if(rosas1 == 690){
+						clearInterval(ohsi);
+						pasto = false;
+						bala1.style.display = "none";
+						bala1.style.top = bala_y1;
+						bala1.style.left = bala_x1;
+					}
+				}
+				else{
+					rosas1 -= 2;
+					bala1.style.left = rosas1;
+					if((mario_izquierda + 20) == rosas1 && rojas1 <= (mario_arriba + 70) && rojas1 >= mario_arriba){
+						clearInterval(ohsi);
+						pasto = false;
+						bala1.style.display = "none";
+						bala1.style.top = bala_y1;
+						bala1.style.left = bala_x1;
+						const easy = document.getElementById('cocorom'+cont_co_mario);
+						easy.style.display = "none";
+						cont_co_mario--;
+						if(cont_co_mario == 0){
+							salir = true;
+							document.getElementById('gameover_player2').style.display = "block";
+							setTimeout(reinicio,100)
+						}
+					}
+					if(rosas1 == 0){
+						clearInterval(ohsi);
+						pasto = false;
+						bala1.style.display = "none";
+						bala1.style.top = bala_y1;
+						bala1.style.left = bala_x1;
+					}
+				}
+				}
+			}
+			//aqui terminan las funciones para player2
+			//las funciones generales:
+			
+			function reinicio(){
+			//configuraciones de inicio css y html
+			document.getElementById("cocorom1").style.display = "block";
+			document.getElementById("cocorom2").style.display = "block";
+			document.getElementById("cocorom3").style.display = "block";
+			document.getElementById("cocoros1").style.display = "block";
+			document.getElementById("cocoros2").style.display = "block";
+			document.getElementById("cocoros3").style.display = "block";
+			document.getElementById("mario").style.left = "0px";
+			document.getElementById("sonic").style.left = "660px";
+			document.getElementById("mario").style.top = "380px";
+			document.getElementById("sonic").style.top = "380px";
+			document.getElementById("mario").src = "player1.png";
+			document.getElementById("sonic").src = "player2_v.png";
+			document.getElementById("bala").style.top = "405px";
+			document.getElementById("bala1").style.top = "405px";
+			document.getElementById("bala").style.left = "40px";
+			document.getElementById("bala1").style.left = "650px";
+			
+			//este es para player 1
+			gravedad_top = 200;
+			gravedad_bottom = 380;
+			il = mario.style.top;
+			il.split("px");
+			mario_arriba = parseInt(il);
+			el = mario.style.left;
+			el.split("px");
+			mario_izquierda = parseInt(el);
+			it = 1;
+			rav = true;
+			calvin = true;
+			falso = false;
+			religiosa = 1;
+			ga = bala.style.left;
+			ga.split("px");
+			bala_x = parseInt(ga);
+			go = bala.style.top;
+			go.split("px");
+			bala_y = parseInt(go);
+			claro = 1;
+			pasta = false;
+			hipo = false;
+			zzz = false;
+			cont_co_mario= 3;
+			
+			//este es para player 2
+			gravedad_top1 = 200;
+			gravedad_bottom1 = 380;
+			ils = sonic.style.top;
+			ils.split("px");
+			sonic_arriba = parseInt(ils);
+			els = sonic.style.left;
+			els.split("px");
+			sonic_izquierda = parseInt(els);
+			it1 = 1;
+			rav1 = true;
+			calvin1 = true;
+			falso1 = false;
+			religiosa1 = 1;
+			ga1 = bala1.style.left;
+			ga1.split("px");
+			bala_x1 = parseInt(ga1);
+			go1 = bala1.style.top;
+			go1.split("px");
+			bala_y1 = parseInt(go1);
+			oscuro = 1;
+			pasto = false;
+			hipo1 = true;
+			zzz1 = true;
+			cont_co_sonic= 3;
+			
+			//variables en general
+			confia = false;
+			salir = false;
+			cont = 1000;
+			
+			console.log("yo y los");
+			}
+			
+			function aparece(){
+				click.play();
+				kkk.style.display = "none";
+				jajaja.style.display = "none";
+				config.style.display = "none";
+				pqbro.style.display = "block";
+			}
+			
+			function configuracion(){
+				click.play();
+				config.style.display = "block";
+				pqbro.style.display = "none";
+			}
+			
+			function controlespapu(){
+				click.play();
+				tuto.style.display = "block";
+				pqbro.style.display = "none";
+			}
+			
+			function reanudar(){
+				click.play();
+				paz.style.display = "none";
+				cont = 1000;
+				hola();
+			}
+			function musica_papu(){
+				if(musica_on == false){
+					music.play();
+					document.getElementById('soc').src = "audio.png";
+					musica_on = true;
+				}
+				else{
+					music.pause();
+					document.getElementById('soc').src = "muted.png";
+					musica_on = false;
+				}
+			}
+			
+			function sonido_papu(){
+				if(sonido_on == false){
+					piu.volume = 0.5;
+					piu1.volume = 0.5;
+					click.volume = 0.5;
+					caida.volume = 0.5;
+					caida1.volume = 0.5;
+					document.getElementById('sic').src = "audio.png";
+					sonido_on = true;
+				}
+				else{
+					piu.volume = 0;
+					piu1.volume = 0;
+					click.volume = 0;
+					caida.volume = 0;
+					caida1.volume = 0;
+					document.getElementById('sic').src = "muted.png";
+					sonido_on = false;
+				}
+			}
+			
+			function musica(){
+				var he = vol_music.value;
+				he *= 0.01
+				music.volume = he;
+				if(he == 0){
+					document.getElementById('soc').src = "muted.png";
+					musica_on = false;
+				}
+				else{
+					music.play();
+					document.getElementById('soc').src = "audio.png";
+					musica_on = true;
+				}
+			}
+			
+			function sonido(){
+				var you = vol_sound.value;
+				you *= 0.01
+				piu.volume = you;
+				piu1.volume = you;
+				click.volume = you;
+				caida.volume = you;
+				caida1.volume = you;
+				if(you == 0){
+					document.getElementById('sic').src = "muted.png";
+					sonido_on = false;
+				}
+				else{
+					document.getElementById('sic').src = "audio.png";
+					sonido_on = true;
+				}
+			}
+			
+			if(vol_music.value > 0 || musica_on == true){
+				music.onended = function() {
+					music.play();
+				};
+			}
+			
+		</script>
+	</body>
+</html>
